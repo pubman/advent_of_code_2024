@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"sort"
+	"strings"
 )
 
 func main() {
@@ -52,4 +53,19 @@ func main() {
 	sort.Ints(slice)
 
 	fmt.Println(slice)
+
+	// dynamic programming fibonacci
+	fib := make(map[int]int)
+	fib[0] = 0
+	fib[1] = 1
+
+	n := 10
+	for i := 2; i <= n; i++ {
+		fib[i] = fib[i-1] + fib[i-2]
+	}
+
+	fmt.Println(fib[n])
+
+	//contains
+	fmt.Println(strings.Contains("Hello, World!", "World"))
 }
