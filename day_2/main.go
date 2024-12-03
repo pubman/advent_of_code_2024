@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-func main() {
+func Task1() {
 	// 	input :=
 	// 		`7 6 4 2 1
 	// 1 2 7 8 9
@@ -33,8 +33,36 @@ func main() {
 
 		if isSafe(partsInt) {
 			count++
+		}
+	}
+	fmt.Println(count)
+}
+
+func Task2() {
+	// 	input :=
+	// 		`7 6 4 2 1
+	// 1 2 7 8 9
+	// 9 7 6 2 1
+	// 1 3 2 4 5
+	// 8 6 4 4 1
+	// 1 3 6 7 9`
+
+	input, _ := os.ReadFile("input.txt")
+
+	count := 0
+
+	lines := strings.Split(string(input), "\n")
+	for _, line := range lines {
+		parts := strings.Split(line, " ")
+		partsInt := make([]int, len(parts))
+		//Convert the parts to ints
+		for i, part := range parts {
+			partsInt[i], _ = strconv.Atoi(part)
+		}
+
+		if isSafe(partsInt) {
+			count++
 		} else {
-			fmt.Println("not safe", partsInt)
 			valid := removeIndexes(partsInt)
 			if valid {
 				count++
@@ -50,7 +78,6 @@ func removeIndexes(partsInt []int) bool {
 		result := make([]int, 0)
 		result = append(result, partsInt[:i]...)
 		result = append(result, partsInt[i+1:]...)
-		fmt.Println(result)
 		valid := isSafe(result)
 		if valid {
 			return true
@@ -79,4 +106,12 @@ func isSafe(partsInt []int) bool {
 
 	}
 	return valid
+}
+
+func main() {
+	fmt.Println("Task 1:")
+	Task1()
+	fmt.Println("--------------------------------")
+	fmt.Println("Task 2:")
+	Task2()
 }

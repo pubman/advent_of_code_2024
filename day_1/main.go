@@ -30,7 +30,6 @@ func parseInput(list1 []int, list2 []int) ([]int, []int) {
 	//parse input and add to lists
 	lines := strings.Split(input, "\n")
 	for _, line := range lines {
-		fmt.Println(line)
 		numbers := strings.Split(line, "   ")
 		number1, _ := strconv.Atoi(numbers[0])
 		number2, _ := strconv.Atoi(numbers[1])
@@ -41,7 +40,7 @@ func parseInput(list1 []int, list2 []int) ([]int, []int) {
 	return list1, list2
 }
 
-func task1() {
+func Task1() {
 	// Solution: Consecutively add up the smallest numbers in each list, then sum those values.
 	var list1 []int
 	var list2 []int
@@ -50,9 +49,6 @@ func task1() {
 	//sort lists
 	sort.Ints(list1)
 	sort.Ints(list2)
-
-	fmt.Println(list1)
-	fmt.Println(list2)
 
 	var sum int
 
@@ -67,7 +63,7 @@ func task1() {
 	fmt.Println(sum)
 }
 
-func task2() {
+func Task2() {
 	//Solution: create a frequency list for list 2
 	var list1 []int
 	var list2 []int
@@ -88,6 +84,9 @@ func task2() {
 }
 
 func main() {
-	//task1()
-	task2()
+	fmt.Println("Task 1:")
+	Task1()
+	fmt.Println("--------------------------------")
+	fmt.Println("Task 2:")
+	Task2()
 }
